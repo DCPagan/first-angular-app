@@ -1,8 +1,4 @@
-export interface UserData {
-  id: string;
-  name: string;
-  avatar: string
-}
+import { UserData } from "./user/user.model";
 
 export const DUMMY_USERS: Array<UserData> = [
   {

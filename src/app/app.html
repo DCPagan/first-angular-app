@@ -357,6 +357,8 @@
   @if (user !== undefined) {
     <app-tasks
       [user]="user" />
+  } @else {
+    <p id="fallback">Select an user to see their tasks.</p>
   }
 </main>
 <router-outlet />

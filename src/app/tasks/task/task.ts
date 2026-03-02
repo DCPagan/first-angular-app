@@ -1,8 +1,5 @@
-import { Component } from '@angular/core';
-
-export interface TaskData {
-
-}
+import { Component, Input } from '@angular/core';
+import { TaskData } from './task.model';
 
 @Component({
   selector: 'app-task',
@@ -10,4 +7,6 @@ export interface TaskData {
   templateUrl: './task.html',
   styleUrl: './task.scss',
 })
-export class Task {}
+export class Task {
+  @Input({required: true}) task!: TaskData;
+}

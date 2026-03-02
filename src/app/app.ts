@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DUMMY_USERS, UserData } from './dummy-users';
+import { DUMMY_USERS } from './dummy-users';
+import { UserData } from "./user/user.model";
 import { Header } from "./header/header";
 import { Tasks } from "./tasks/tasks";
 import { User } from "./user/user";
@@ -16,7 +17,7 @@ export class App {
   users: Array<UserData> = DUMMY_USERS;
   selectedUser = signal<UserData | undefined>(undefined);
 
-  onSelectUser(id: string): void {
-    this.selectedUser.set(this.users.find((user) => id == user.id));
+  onSelectUser(user: UserData): void {
+    this.selectedUser.set(user);
   }
 }
