@@ -40,4 +40,11 @@ export class Tasks {
       ]
     }));
   }
+
+  onCompleteTask(task: TaskData) {
+    this.tasks.update((tasks) => ({
+      ...tasks,
+      [task.userId]: tasks[task.userId].filter(({ id }) => id !== task.id)
+    }));
+  }
 }
