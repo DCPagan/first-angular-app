@@ -347,6 +347,7 @@
       <li>
         <app-user
           [user]="user"
+          [selected]="selectedUser()?.id === user.id"
           (select)="onSelectUser($event)" />
       </li>
     }
