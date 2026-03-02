@@ -1,4 +1,4 @@
-import { Component, Signal, WritableSignal, computed, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DUMMY_USERS, UserData } from '../dummy-users';
 
 const randomIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -10,12 +10,13 @@ const randomIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.scss',
 })
 export class User {
-  selectedUser: WritableSignal<UserData> = signal(DUMMY_USERS[randomIndex]);
+  @Input() id!: string;
+  @Input({ required: true }) avatar!: string;
+  @Input({ required: true }) name!: string;
 
-  imagePath: Signal<string> = computed(() => `users/${this.selectedUser().avatar}`);
-
-  onSelectUser(): void {
-    const randomIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);
+  get imagePath(): string {
+    return `users/${this.avatar}`;
   }
+
+  onSelectUser(): void {}
 }
