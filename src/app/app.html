@@ -353,5 +353,10 @@
       </li>
     }
   </ul>
+  @let user = selectedUser();
+  @if (user !== undefined) {
+    <app-tasks
+      [user]="user" />
+  }
 </main>
 <router-outlet />

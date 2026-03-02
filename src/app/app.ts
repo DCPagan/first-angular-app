@@ -1,20 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from "./header/header";
-import { User } from "./user/user";
 import { DUMMY_USERS, UserData } from './dummy-users';
+import { Header } from "./header/header";
+import { Tasks } from "./tasks/tasks";
+import { User } from "./user/user";
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterOutlet, User],
+  imports: [Header, RouterOutlet, Tasks, User],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('first-angular-app');
+  protected readonly title = signal<string>('first-angular-app');
   users: Array<UserData> = DUMMY_USERS;
+  selectedUser = signal<UserData | undefined>(undefined);
 
   onSelectUser(id: string): void {
-    console.log(id);
+    this.selectedUser.set(this.users.find((user) => id == user.id));
   }
 }

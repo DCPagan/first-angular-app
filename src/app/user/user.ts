@@ -12,7 +12,7 @@ export class User {
   @Input({required: true}) id!: string
   @Input({required: true}) avatar!: string;
   @Input({required: true}) name!: string;
-  @Output() select: EventEmitter<string> = new EventEmitter<string>()
+  @Output() select = new EventEmitter<string>()
 
   imagePath: Signal<string> = computed(() => `users/${this.avatar}`);
 
