@@ -10,15 +10,12 @@ import { type UserData } from "./user.model";
   styleUrl: './user.scss',
 })
 export class User {
-  @Input({required: true}) id!: string
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  @Input({required: true}) user!: UserData
   @Output() select = new EventEmitter<UserData>()
 
-  imagePath: Signal<string> = computed(() => `users/${this.avatar}`);
+  imagePath: Signal<string> = computed(() => `users/${this.user.avatar}`);
 
   onSelectUser(): void {
-    const { id, avatar, name }: UserData = this;
-    this.select.emit({ id, avatar, name })
+    this.select.emit(this.user);
   }
 }

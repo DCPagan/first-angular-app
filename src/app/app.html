@@ -346,9 +346,7 @@
     @for (user of users; track user.id) {
       <li>
         <app-user
-          [id]="user.id"
-          [name]="user.name"
-          [avatar]="user.avatar"
+          [user]="user"
           (select)="onSelectUser($event)" />
       </li>
     }
