@@ -2,7 +2,10 @@
   <header>
     <h2>Tasks of {{user.name}}</h2>
     <menu>
-      <button (click)="addTask()">Add task</button>
+      <!--
+        <button command="show-modal" commandfor="new-task">Add task</button>
+      -->
+      <button (click)="onStartAddTask()">Add Task</button>
     </menu>
   </header>
   <ul>
@@ -12,4 +15,7 @@
       </li>
     }
   </ul>
+  @if (addingTask()) {
+    <app-new-task [user]="user" />
+  }
 </section>
