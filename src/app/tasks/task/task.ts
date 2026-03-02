@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TaskData } from './task.model';
+import { type TaskData } from './task.model';
 
 @Component({
   selector: 'app-task',

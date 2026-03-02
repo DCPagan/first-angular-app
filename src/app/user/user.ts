@@ -1,7 +1,7 @@
 import {
   Component, EventEmitter, Input, Output, Signal, computed
 } from '@angular/core';
-import { UserData } from "./user.model";
+import { type UserData } from "./user.model";
 
 @Component({
   selector: 'app-user',

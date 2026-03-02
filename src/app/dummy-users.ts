@@ -1,4 +1,4 @@
-import { UserData } from "./user/user.model";
+import { type UserData } from "./user/user.model";
 
 export const DUMMY_USERS: Array<UserData> = [
   {

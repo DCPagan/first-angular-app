@@ -2,8 +2,8 @@ import { Component, Input, Output, signal } from '@angular/core';
 import { Temporal } from '@js-temporal/polyfill';
 import { dummyTasks } from './dummy-tasks';
 import { Task } from './task/task';
-import { TaskData } from './task/task.model';
-import { UserData } from "../user/user.model";
+import { type TaskData } from './task/task.model';
+import { type UserData } from "../user/user.model";
 import { EventEmitter } from 'stream';
 
 @Component({

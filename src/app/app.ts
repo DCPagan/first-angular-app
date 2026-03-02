@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DUMMY_USERS } from './dummy-users';
-import { UserData } from "./user/user.model";
+import { type UserData } from "./user/user.model";
 import { Header } from "./header/header";
 import { Tasks } from "./tasks/tasks";
 import { User } from "./user/user";
