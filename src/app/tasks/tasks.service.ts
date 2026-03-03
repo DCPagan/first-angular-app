@@ -7,6 +7,13 @@ import { type TaskData } from './task/task.model';
 export class TasksService {
   private tasks: Record<string, Array<TaskData>> = {}
 
+  constructor() {
+    const tasks: string | null = localStorage.getItem('tasks');
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    }
+  }
+
   getUserTasks(userId: string): Array<TaskData> {
     return this.tasks[userId] ?? [];
   }
@@ -17,6 +24,7 @@ export class TasksService {
     } else {
       this.tasks[task.userId] = [task];
     }
+    this.saveTasks();
   }
 
   removeTask(task: TaskData) {
@@ -30,5 +38,10 @@ export class TasksService {
         delete this.tasks[userId];
       }
     }
+    this.saveTasks();
+  }
+
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
