@@ -1,20 +1,21 @@
-<dialog open id="new-task">
+<div class="backdrop" (click)="onClose()"></div>
+<dialog open>
   <h2>New task for {{user.name}}</h2>
-  <form method="dialog">
+  <form (ngSubmit)="onSubmit()">
     <div class="form-field">
       <label for="title">Title</label>
-      <input id="title" name="title" type="text" />
+      <input id="title" name="title" type="text" [(ngModel)]="title" />
     </div>
     <div class="form-field">
       <label for="summary">Summary</label>
-      <textarea id="summary" name="summary" rows="5"></textarea>
+      <textarea id="summary" name="summary" rows="5" [(ngModel)]="summary"></textarea>
     </div>
     <div class="form-field">
-      <label for="dueDate">Due Date</label>
-      <input id="dueDate" name="dueDate" type="date" />
+      <label for="due-date">Due Date</label>
+      <input id="due-date" name="due-date" type="date" [(ngModel)]="dueDate" />
     </div>
     <div class="actions">
-      <button type="button" command="close" commandFor="new-task">Close</button>
+      <button type="button" (click)="onClose()">Close</button>
       <button type="submit">Create</button>
     </div>
   </form>

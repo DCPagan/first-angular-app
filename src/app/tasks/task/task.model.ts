@@ -1,4 +1,3 @@
-
 export interface TaskData {
   id: string;
   userId: string;
@@ -6,3 +5,6 @@ export interface TaskData {
   summary: string;
   dueDate: string;
 }
+
+export type NewTaskData = Omit<TaskData, "id" | "userId">;
+

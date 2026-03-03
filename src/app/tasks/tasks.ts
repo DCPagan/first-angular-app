@@ -1,10 +1,7 @@
-import { Component, Input, Output, signal, WritableSignal } from '@angular/core';
-import { Temporal } from '@js-temporal/polyfill';
-import { dummyTasks } from './dummy-tasks';
+import { Component, Input, signal, WritableSignal } from '@angular/core';
 import { Task } from './task/task';
 import { type TaskData } from './task/task.model';
 import { type UserData } from "../user/user.model";
-import { EventEmitter } from 'stream';
 import { NewTask } from "./new-task/new-task";
 
 @Component({
@@ -17,36 +14,25 @@ export class Tasks {
   @Input({required: true}) user!: UserData;
   tasks = signal<Record<string, Array<TaskData>>>({});
   addingTask: WritableSignal<boolean> = signal<boolean>(false);
-  private _serial: bigint = 0n;
-
-  get serial() {
-    return this._serial++;
-  }
 
   get selectedUserTasks() {
     return this.tasks()[this.user.id];
   }
 
-  /*
-  addTask(): void {
-    this.tasks.update((tasks) => ({
-      ...tasks,
-      [this.user.id]: [
-        ...tasks[this.user.id] ?? [],
-        {
-          id: `t${this.serial}`,
-          userId: this.user.id,
-          title: 'Title',
-          dueDate: Temporal.Now.plainDateISO().toString(),
-          summary: 'Summary'
-        }
-      ]
-    }));
-  }
-  */
-
   onStartAddTask(): void {
     this.addingTask.set(true);
+  }
+
+  onAddTask(task: TaskData) {
+    this.tasks.update((tasks) => ({
+      ...tasks,
+      [this.user.id]: [...tasks[this.user.id] ?? [], task]
+    }));
+    this.addingTask.set(false);
+  }
+
+  onCancelAddTask() {
+    this.addingTask.set(false);
   }
 
   onCompleteTask(task: TaskData): void {

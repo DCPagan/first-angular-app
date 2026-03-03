@@ -16,6 +16,9 @@
     }
   </ul>
   @if (addingTask()) {
-    <app-new-task [user]="user" />
+    <app-new-task
+      [user]="user"
+      (add)="onAddTask($event)"
+      (cancel)="onCancelAddTask()" />
   }
 </section>
